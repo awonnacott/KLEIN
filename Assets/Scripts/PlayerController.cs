@@ -10,22 +10,32 @@ public class PlayerController : MonoBehaviour {
 	public Text wText;
 	public Text infoText;
 
-	public static int count = 0;
+	public string nextLevelName;
 
-	public static float wNow = 0;
+	public static int count;
+
+	public static float wNow;
 	public static float wLastDelta = 0;
 	public WController[] WObjects;
 
-	// Update is called once per frame
+
+	// Awake is called upon creation, before Start, and even if script is not enabled.
+	void Awake () {
+		wNow = 0;
+		count = 0;
+	}
+	// Start is called upon creation, after Awake, and before the first Update, but only iff script enabled.
+
+	// Update is called once per frame, iff script enabled
 	void Update () {
 		countText.text = "Count: " + count.ToString ();
 		wText.text = "Spin: " + wNow.ToString();
 		if (count >= scoreToWin) {
-			Application.LoadLevel("WinScreen");
+			Application.LoadLevel(nextLevelName);
 		}	
 	}
 
-	// FixedUpdate is called once per physics
+	// FixedUpdate is called once per physics, iff script enabled
 	void FixedUpdate() {
 		float delta = Input.GetAxis ("Switch");
 		if (delta != 0) {
