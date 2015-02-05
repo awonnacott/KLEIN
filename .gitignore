@@ -63,5 +63,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-*.exe
+KLEIN.exe
+KLEIN.x86
 KLEIN_Data/
+KLEIN.app/
