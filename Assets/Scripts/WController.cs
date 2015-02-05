@@ -15,8 +15,6 @@ public class WController : MonoBehaviour {
 	}
 
 	public void PlayerUpdate(float wNow) {
-		Debug.Log ("SpinController PlayerUpdate");
-		Debug.Log (transform.position.GetType());
 		if (PlayerController.wNow < maxW && PlayerController.wNow > minW && !gone) {
 			gameObject.SetActive (true);
 			transform.position = maxW_V * (wNow-minW)/(maxW-minW) + minW_V * (maxW-wNow)/(maxW-minW);
