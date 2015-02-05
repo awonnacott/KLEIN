@@ -18,10 +18,10 @@ public class WController : MonoBehaviour {
 		if (PlayerController.wNow < maxW && PlayerController.wNow > minW && !gone) {
 			gameObject.SetActive (true);
 			transform.position = maxW_V * (wNow-minW)/(maxW-minW) + minW_V * (maxW-wNow)/(maxW-minW);
-		} else if (PlayerController.wNow <= maxW+maxWBorder && PlayerController.wNow >= maxW) {
+		} else if (PlayerController.wNow <= maxW+maxWBorder && PlayerController.wNow >= maxW && !gone) {
 			gameObject.SetActive (true);
 			transform.position = maxW_V;
-		} else if (PlayerController.wNow <= minW && PlayerController.wNow >= minW-minWBorder) {
+		} else if (PlayerController.wNow <= minW && PlayerController.wNow >= minW-minWBorder && !gone) {
 			gameObject.SetActive (true);
 			transform.position = minW_V;
 		} else {
