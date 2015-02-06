@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour {
 
 	public Text countText;
 	public Text wText;
-	public Text infoText;
 
 	public string nextLevelName;
 
@@ -29,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame, iff script enabled
 	void Update () {
 		countText.text = "Count: " + count.ToString ();
-		wText.text = "Spin: " + wNow.ToString();
+		wText.text = "w = " + wNow.ToString();
 		if (count >= scoreToWin) {
 			Application.LoadLevel(nextLevelName);
 		}	

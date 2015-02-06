@@ -27,8 +27,8 @@ public class TextChanger : MonoBehaviour {
 			} else if (lastText) {
 				Application.LoadLevel(nextLevelName);
 			} else {
-				nextText.gameObject.SetActive (true);
 				gameObject.SetActive (false);
+				nextText.gameObject.SetActive (true);
 			}
 		}
 	}
