@@ -11,11 +11,10 @@ public class PlayerController : MonoBehaviour {
 
 	public string nextLevelName;
 
-	public static int count;
+	public static int count = 0;
 
-	public static float wNow;
+	public static float wNow = 0;
 	public static float wLastDelta = 0;
-	public WController[] WObjects;
 
 
 	// Awake is called upon creation, before Start, and even if script is not enabled.
@@ -40,9 +39,6 @@ public class PlayerController : MonoBehaviour {
 		if (delta != 0) {
 			wLastDelta = delta * Time.deltaTime;
 			wNow += wLastDelta;
-			for(int i=0; i<WObjects.Length; i++) {
-				WObjects[i].PlayerUpdate(wNow);
-			}
 		}
 	}
 	void OnTriggerEnter(Collider other) {
