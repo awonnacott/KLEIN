@@ -10,46 +10,20 @@ public class WController : MonoBehaviour {
 	public Vector3 maxW_V;
 	public WComponent[] wComponents;
 
-	/*void Start() {
-		PlayerUpdate (0);
-	}*/
-
 	public void Awake() {
 		wComponents = gameObject.GetComponents<WComponent> ();
+		//WComponent#Awake() called on all as well
 	}
 
 	public void FixedUpdate() {
 		foreach (WComponent wComponent in wComponents) {
-			if ((PlayerController.wNow == wComponent.wMin && PlayerController.wLastDelta > 0) || (PlayerController.wNow == wComponent.wMax && PlayerController.wLastDelta < 0)) {
+			if ((PlayerController.wNow >= wComponent.wMin && PlayerController.wLastDelta >= PlayerController.wNow - wComponent.wMin) || (PlayerController.wNow <= wComponent.wMax && PlayerController.wLastDelta <= PlayerController.wNow - wComponent.wMax)) {
 				wComponent.Activate();
-			} else if ((PlayerController.wNow == wComponent.wMax && PlayerController.wLastDelta > 0) || (PlayerController.wNow == wComponent.wMin && PlayerController.wLastDelta < 0)) {
+			} else if ((PlayerController.wNow >= wComponent.wMax && PlayerController.wLastDelta >= PlayerController.wNow - wComponent.wMax) || (PlayerController.wNow <= wComponent.wMin && PlayerController.wLastDelta <= PlayerController.wNow - wComponent.wMin)) {
 				wComponent.Deactivate();
-			} else if ((PlayerController.wNow < wComponent.wMax && PlayerController.wNow > wComponent.wMin && wComponent.interpolate) || ((PlayerController.wNow > wComponent.wMax || PlayerController.wNow < wComponent.wMin) && wComponent.exterpolate)) {
+			} else if ((PlayerController.wNow < wComponent.wMax && PlayerController.wNow > wComponent.wMin && wComponent.GetInterpolate()) || ((PlayerController.wNow > wComponent.wMax || PlayerController.wNow < wComponent.wMin) && wComponent.GetExterpolate())) {
 				wComponent.WUpdate ();
 			}
 		}
-
-		if (PlayerController.wNow < maxW && PlayerController.wNow > minW) {
-			//gameObject.SetActive (true);
-			gameObject.GetComponent<MeshRenderer>().enabled = true;
-			gameObject.GetComponent<Collider>().enabled = true;
-
-			transform.position = maxW_V * (PlayerController.wNow-minW)/(maxW-minW) + minW_V * (maxW-PlayerController.wNow)/(maxW-minW);
-		} else if (PlayerController.wNow <= maxW+maxWBorder && PlayerController.wNow >= maxW) {
-			//gameObject.SetActive (true);
-			gameObject.GetComponent<MeshRenderer>().enabled = true;
-			gameObject.GetComponent<Collider>().enabled = true;
-			transform.position = maxW_V;
-		} else if (PlayerController.wNow <= minW && PlayerController.wNow >= minW-minWBorder) {
-			//gameObject.SetActive (true);
-			gameObject.GetComponent<MeshRenderer>().enabled = true;
-			gameObject.GetComponent<Collider>().enabled = true;
-			transform.position = minW_V;
-		} else {
-			//gameObject.SetActive (false);
-			gameObject.GetComponent<MeshRenderer>().enabled = false;
-			gameObject.GetComponent<Collider>().enabled = false;
-		}
-
 	}
 }
