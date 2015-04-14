@@ -9,9 +9,9 @@ public class WScaleComponent : WComponent {
 	public Vector3 wMinScale;
 	public Vector3 wMaxScale;
 	public override void Awake() {
-		if (PlayerController.wNow <= wMin) {
+		if (PlayerController.wNow == wMin) {
 			transform.localScale = wMinScale;
-		} else if (PlayerController.wNow >= wMin) {
+		} else if (PlayerController.wNow == wMin) {
 			transform.localScale = wMaxScale;
 		} else if (PlayerController.wNow > wMin && PlayerController.wNow < wMax) {
 			transform.localScale = wMaxScale * (PlayerController.wNow - wMin) / (wMax - wMin) + wMinScale * (wMax - PlayerController.wNow) / (wMax - wMin);

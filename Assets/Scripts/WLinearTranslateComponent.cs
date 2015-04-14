@@ -9,9 +9,9 @@ public class WLinearTranslateComponent : WComponent {
 	public Vector3 wMinPosition;
 	public Vector3 wMaxPosition;
 	public override void Awake() {
-		if (PlayerController.wNow <= wMin) {
+		if (PlayerController.wNow == wMin) {
 			transform.position = wMinPosition;
-		} else if (PlayerController.wNow >= wMin) {
+		} else if (PlayerController.wNow == wMin) {
 			transform.position = wMaxPosition;
 		} else if (PlayerController.wNow > wMin && PlayerController.wNow < wMax) {
 				transform.position = wMaxPosition * (PlayerController.wNow - wMin) / (wMax - wMin) + wMinPosition * (wMax - PlayerController.wNow) / (wMax - wMin);

@@ -11,11 +11,11 @@ public class WColorComponent : WComponent {
 	public Color wMaxColor;
 	public override void Awake() {
 		material = gameObject.GetComponent<MeshRenderer>().material;
-		if (PlayerController.wNow < wMin) {
+		if (PlayerController.wNow == wMin) {
 			material.SetColor("_Color", wMinColor);
-		} else if (PlayerController.wNow > wMax) {
+		} else if (PlayerController.wNow == wMax) {
 			material.SetColor("_Color", wMaxColor);
-		} else if (PlayerController.wNow >= wMin && PlayerController.wNow <= wMax) {
+		} else if (PlayerController.wNow > wMin && PlayerController.wNow < wMax) {
 			material.SetColor("_Color", Color.Lerp(wMinColor, wMaxColor, (PlayerController.wNow-wMin)/(wMax-wMin)));
 		}
 	}

@@ -9,9 +9,9 @@ public class WRotateComponent : WComponent {
 	public Vector3 wMinRotation;
 	public Vector3 wMaxRotation;
 	public override void Awake() {
-		if (PlayerController.wNow <= wMin) {
+		if (PlayerController.wNow == wMin) {
 			transform.rotation = Quaternion.Euler (wMinRotation);
-		} else if (PlayerController.wNow >= wMax) {
+		} else if (PlayerController.wNow == wMax) {
 			transform.rotation = Quaternion.Euler(wMaxRotation);
 		} else if (PlayerController.wNow > wMin && PlayerController.wNow < wMax) {
 			transform.rotation = Quaternion.Slerp(Quaternion.Euler(wMinRotation), Quaternion.Euler(wMaxRotation), (PlayerController.wNow-wMin)/(wMax-wMin));
