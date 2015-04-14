@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WTransformComponent : WComponent {
-	public WTransformComponent() {
+public class WLinearTranslateComponent : WComponent {
+	public WLinearTranslateComponent() {
 		interpolate = true;
 		exterpolate = false;
 	}

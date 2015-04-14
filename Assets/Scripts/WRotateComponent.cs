@@ -14,7 +14,7 @@ public class WRotateComponent : WComponent {
 		} else if (PlayerController.wNow >= wMax) {
 			transform.rotation = Quaternion.Euler(wMaxRotation);
 		} else if (PlayerController.wNow > wMin && PlayerController.wNow < wMax) {
-			transform.rotation = Quaternion.Slerp(Quaternion.Euler(wMinRotation), Quaternion.Euler(wMaxRotation), PlayerController.wNow);
+			transform.rotation = Quaternion.Slerp(Quaternion.Euler(wMinRotation), Quaternion.Euler(wMaxRotation), (PlayerController.wNow-wMin)/(wMax-wMin));
 		}
 	}
 	public override void Activate() {
@@ -23,7 +23,7 @@ public class WRotateComponent : WComponent {
 	}
 	public override void WUpdate() {
 		if (PlayerController.wNow >= wMin && PlayerController.wNow <= wMax) {
-			transform.rotation = Quaternion.Slerp(Quaternion.Euler(wMinRotation), Quaternion.Euler(wMaxRotation), PlayerController.wNow);
+			transform.rotation = Quaternion.Slerp(Quaternion.Euler(wMinRotation), Quaternion.Euler(wMaxRotation), (PlayerController.wNow-wMin)/(wMax-wMin));
 		} else {
 			Debug.Log ("WUpdate called exterpolatively on WRotateComponent.");
 		}
