@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour {
 				winText.gameObject.SetActive(true);
 				nextLevelName = null;
 			} else if (nextLevelName != null) {
+				wNow = 0;
 				Application.LoadLevel(nextLevelName);
 			}
 		}	

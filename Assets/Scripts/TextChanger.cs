@@ -25,6 +25,7 @@ public class TextChanger : MonoBehaviour {
 			if (lastText && nextLevelName == "") {
 				gameObject.SetActive (false);
 			} else if (lastText) {
+				PlayerController.wNow = 0;
 				Application.LoadLevel(nextLevelName);
 			} else {
 				gameObject.SetActive (false);
