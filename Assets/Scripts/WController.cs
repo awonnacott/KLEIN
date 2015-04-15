@@ -2,12 +2,6 @@
 using System.Collections;
 
 public class WController : MonoBehaviour {
-	public float minW;
-	public float maxW;
-	public float minWBorder;
-	public float maxWBorder;
-	public Vector3 minW_V;
-	public Vector3 maxW_V;
 	public WComponent[] wComponents;
 
 	public void Awake() {
