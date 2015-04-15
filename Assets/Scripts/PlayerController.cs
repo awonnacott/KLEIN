@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
 	public Text countText;
 	public Text wText;
 
+	public TextChanger winText;
 	public string nextLevelName;
 
 	public static int count = 0;
@@ -29,7 +30,11 @@ public class PlayerController : MonoBehaviour {
 		countText.text = "Count: " + count.ToString ();
 		wText.text = "w = " + wNow.ToString();
 		if (count >= scoreToWin) {
-			Application.LoadLevel(nextLevelName);
+			if (nextLevelName == "") {
+				Application.LoadLevel(nextLevelName);
+			} else {
+				winText.gameObject.SetActive(true);
+			}
 		}	
 	}
 
