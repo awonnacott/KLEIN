@@ -31,9 +31,10 @@ public class PlayerController : MonoBehaviour {
 		wText.text = "w = " + wNow.ToString();
 		if (count >= scoreToWin) {
 			if (nextLevelName == "") {
-				Application.LoadLevel(nextLevelName);
-			} else {
 				winText.gameObject.SetActive(true);
+				nextLevelName = null;
+			} else if (nextLevelName != null) {
+				Application.LoadLevel(nextLevelName);
 			}
 		}	
 	}
